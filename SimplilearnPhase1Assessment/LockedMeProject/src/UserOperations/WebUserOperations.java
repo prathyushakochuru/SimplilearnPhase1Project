@@ -1,6 +1,7 @@
 package UserOperations;
 import java.util.Scanner;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,21 +21,50 @@ public class WebUserOperations {
 		System.out.println("3. Navigate to the main menu");
 		
 		Scanner scanner = new Scanner(System.in);
-		int op;
+		int op, sop;
+		String strfilename, strfolder;
+		strfolder = "/Users/Neena/Documents/SimpliLearnFSD/SimplilearnPhase1Assessment/LockedMeProject/UserFiles/Pictures";
 		op = scanner.nextInt();
 		
+		List<String> files = new ArrayList<String>();
+		files = Utilityoperations.getFilenames(strfolder);
+		Collections.sort(files);
 		
 			switch(op)
 			{
 			case 1:
-				List<String> files = new ArrayList<String>();
-				files = Utilityoperations.getFilenames("/Users/Neena/Documents/SimpliLearnFSD/SimplilearnPhase1Assessment/LockedMeProject/UserFiles/Pictures");
-				System.out.println("Here are the files: ");
+				System.out.println("Here are the files in the ascending order: ");
 				for(String strfile:files)
 				{
 					System.out.println(strfile);
 				}
 				break;
+				
+			case 2:
+				System.out.println("Please select few more User file options:");
+				System.out.println("1. Add a file");
+				System.out.println("2. Delete a file");
+				System.out.println("3. Search a file ");
+				
+				sop = scanner.nextInt();
+				
+				if(sop ==1)
+				{
+					System.out.println("Please enter a filename to add: ");
+					strfilename = scanner.next().trim();
+					
+					try {
+						Utilityoperations.addFile(strfolder, strfilename);
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					
+				}
+				break;
+			
+				
 			}
 		
 		
