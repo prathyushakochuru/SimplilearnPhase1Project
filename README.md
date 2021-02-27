@@ -6,4 +6,4 @@ It has all the following files:
 3. Code screenshot document
 4. Output screeshots document
 5. Application flowchart
-5. Jira Sprint board screeshots (all three completed)
+5. Jira Sprint project Cumilative report
